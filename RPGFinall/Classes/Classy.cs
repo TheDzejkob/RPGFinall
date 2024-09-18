@@ -14,5 +14,13 @@ namespace RPGFinall.Classes
         public int ClassArmor { get; set; }
         public int ClassEnergy { get; set; }
 
+        public Classy(string className, int classHealth, int classDamage, int classArmor, int classEnergy)
+        {
+            ClassName = className;
+            ClassHealth = classHealth;
+            ClassDamage = classDamage;
+            ClassArmor = classArmor;
+            ClassEnergy = classEnergy;
+        }
     }
 }

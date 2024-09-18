@@ -25,5 +25,13 @@ namespace RPGFinall
         {
             Close();
         }
+
+        private void NewGameButton_Click(object sender, RoutedEventArgs e)
+        {
+            Character_CreationWindow win2 = new Character_CreationWindow();
+            win2.Show();
+            this.Close();
+
+        }
     }
 }

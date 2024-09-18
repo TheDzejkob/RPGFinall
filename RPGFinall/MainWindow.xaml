@@ -48,7 +48,7 @@
         </StackPanel>
         <Image Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Source="bitmapa.png"></Image>
         <Border Grid.Column="1" Grid.Row="1" >
-            <Button Style="{StaticResource Buttons}">
+            <Button Style="{StaticResource Buttons}" Click="NewGameButton_Click">
                 <Label Style="{StaticResource ButtonLabels}">Start New Game</Label>
             </Button>
         </Border>
