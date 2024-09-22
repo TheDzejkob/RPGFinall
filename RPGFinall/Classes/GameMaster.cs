@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGFinall.Classes
 {
-    internal class GameMaster
+    public class GameMaster
     {
         public bool PlayersTurn { get; set; }
         public bool Alive { get; set; }

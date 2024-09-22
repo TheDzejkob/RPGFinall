@@ -1,0 +1,31 @@
+﻿<Window x:Class="RPGFinall.MainGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RPGFinall"
+        mc:Ignorable="d"
+        Title="InGame" Height="540" Width="960" Background="#120926">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="155*"/>
+            <RowDefinition Height="84*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="550*"/>
+            <ColumnDefinition Width="300*"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="TurnLabel" FontFamily="pack://application:,,,/RPGFinall;component/Fonty/#Cinzel Decorative Black" 
+       Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" 
+       VerticalAlignment="Top" FontSize="19"  Foreground="#8256bf" Margin="189,0,0,0" 
+       >...'s turn</Label>
+
+        <Image x:Name="PlayerImage" Grid.Row="1" Stretch="UniformToFill" />
+
+        <Image x:Name="EnemyImage" Grid.Row="1" Grid.Column="2" Stretch="UniformToFill"/>
+        
+        
+    </Grid>
+</Window>

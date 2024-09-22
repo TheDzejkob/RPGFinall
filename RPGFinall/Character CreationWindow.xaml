@@ -53,13 +53,13 @@
                VerticalAlignment="Top" FontSize="19" Margin="0,2,0,0" Foreground="#8256bf" 
                Height="36" Width="244">Create a character</Label>
 
-        <Label Style="{StaticResource MainText}" Grid.Column="1" 
+        <Label x:Name="PickClassLabel" Style="{StaticResource MainText}" Grid.Column="1" 
                FontFamily="pack://application:,,,/RPGFinall;component/Fonty/#Uncial Antiqua" 
                Margin="0,1,0,0" Grid.RowSpan="3" Width="86" Grid.Row="1">Pick a class</Label>
 
         <Border Grid.Column="0" HorizontalAlignment="Left" Grid.Row="2" 
                 Grid.RowSpan="2" Margin="10,343,0,0">
-            <Button Style="{StaticResource Buttons}" Click="Button_Click">
+            <Button x:Name="CancelButton" Style="{StaticResource Buttons}" Click="Button_Click">
                 <Label Style="{StaticResource ButtonLabels}">Cancel</Label>
             </Button>
         </Border>
@@ -68,28 +68,28 @@
         <Image Grid.Column="2" x:Name="ClassImage" Grid.Row="2" Stretch="UniformToFill" />
 
         <!-- Buttons for selecting different classes -->
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
+        <Border x:Name="KnightButton" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
                 Grid.Row="1" Margin="10,5,0,0" CornerRadius="10">
             <Button Width="130" Background="#a47ed9" Click="KnightButton_Click">
                 <Label Style="{StaticResource ButtonLabels}">Knight</Label>
             </Button>
         </Border>
 
-        <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
+        <Border x:Name="RogueButton" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
                 Grid.Row="1" Margin="180,5,0,0" CornerRadius="10">
             <Button Width="130" Background="#a47ed9" Click="RogueButton_Click">
                 <Label Style="{StaticResource ButtonLabels}">Rogue</Label>
             </Button>
         </Border>
 
-        <Border HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
+        <Border x:Name="MageButton" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
                 Grid.Row="1" Grid.Column="2" Margin="0,5,10,0" CornerRadius="10">
             <Button Width="130" Background="#a47ed9" Click="MageButton_Click">
                 <Label Style="{StaticResource ButtonLabels}">Mage</Label>
             </Button>
         </Border>
 
-        <Border HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
+        <Border x:Name="ArcherButton" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
                 Grid.Row="1" Grid.Column="2" Margin="0,5,180,0" CornerRadius="10">
             <Button Width="130" Background="#a47ed9" Click="ArcherButton_Click">
                 <Label Style="{StaticResource ButtonLabels}">Archer</Label>
@@ -104,12 +104,18 @@
         <Label Grid.Row="2" x:Name="EnergyStatyLabel" Margin="10,100,0,0"  Style="{StaticResource StatyLabels}" >Base Energy:</Label>
 
 
-        <Border Grid.Column="2"  Grid.Row="3"  Margin="100,0,0,0">
-            <Button Style="{StaticResource Buttons}" >
+        <Border x:Name="NameButton" Visibility="Visible"  Grid.Column="2"  Grid.Row="3"  Margin="100,0,0,0">
+            <Button Style="{StaticResource Buttons}" Click="ReadyButton_Click" >
                 <Label Style="{StaticResource ButtonLabels}">I'm ready</Label>
             </Button>
         </Border>
 
-
+        <Border x:Name="ReadyButton" Visibility="Collapsed" Grid.Column="2"  Grid.Row="3"  Margin="100,0,0,0">
+            <Button Style="{StaticResource Buttons}" Click="CreateCharacterButton_Click" >
+                <Label Style="{StaticResource ButtonLabels}">Create character</Label>
+            </Button>
+        </Border>
+        <TextBox x:Name="NameTextBox"  Visibility="Collapsed" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="400" Height="80" FontSize="40"  Background="#a47ed9" Foreground="#201140" FontFamily="pack://application:,,,/RPGFinall;component/Fonty/#Uncial Antiqua" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">...</TextBox>
+        <Label x:Name="NameLabel" Visibility="Collapsed" Grid.Row="2"  Grid.ColumnSpan="3" VerticalAlignment="Top" FontFamily="pack://application:,,,/RPGFinall;component/Fonty/#Cinzel Decorative Black" Foreground="#8256bf" HorizontalAlignment="Center" FontSize="30">What is your Name Tarnished?</Label>
     </Grid>
 </Window>

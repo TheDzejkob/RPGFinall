@@ -34,7 +34,8 @@ namespace RPGFinall
 
             // po tom co se klikneš na jeden z buttonů tak se zmení image 
         private void KnightButton_Click(object sender, RoutedEventArgs e)
-        {
+        {   
+            player.PlayerClass = Knight;
             ClassImage.Source = new BitmapImage(new Uri(filepathKnight, UriKind.Relative));
             ClassNameLabel.Content = Knight.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Knight.ClassHealth;
@@ -46,6 +47,7 @@ namespace RPGFinall
 
         private void MageButton_Click(object sender, RoutedEventArgs e)
         {
+            player.PlayerClass = Mage;
             ClassImage.Source = new BitmapImage(new Uri(filepathMage, UriKind.Relative));
             ClassNameLabel.Content = Mage.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Mage.ClassHealth;
@@ -57,6 +59,7 @@ namespace RPGFinall
 
         private void RogueButton_Click(object sender, RoutedEventArgs e)
         {
+            player.PlayerClass = Rogue;
             ClassImage.Source = new BitmapImage(new Uri(filepathRogue, UriKind.Relative));
             ClassNameLabel.Content = Rogue.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Rogue.ClassHealth;
@@ -68,6 +71,7 @@ namespace RPGFinall
 
         private void ArcherButton_Click(object sender, RoutedEventArgs e)
         {
+            player.PlayerClass = Archer;
             ClassImage.Source = new BitmapImage(new Uri(filepathArcher, UriKind.Relative));
             ClassNameLabel.Content = Archer.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Archer.ClassHealth;
@@ -75,6 +79,40 @@ namespace RPGFinall
             ArmorStatyLabel.Content = "Class Armor‎ " + Archer.ClassArmor;
             EnergyStatyLabel.Content = "Class Stamina‎ " + Archer.ClassEnergy;
 
+        }
+
+        private void ReadyButton_Click(object sender, RoutedEventArgs e)
+        {
+            NameLabel.Visibility = Visibility.Visible;
+            NameTextBox.Visibility = Visibility.Visible;
+
+            ClassImage.Visibility = Visibility.Hidden;
+            ClassNameLabel.Visibility = Visibility.Hidden;
+            HpStatyLabel.Visibility = Visibility.Hidden;
+            DmgStatyLabel.Visibility = Visibility.Hidden;
+            ArmorStatyLabel.Visibility = Visibility.Hidden;
+            EnergyStatyLabel.Visibility = Visibility.Hidden;
+
+            KnightButton.Visibility = Visibility.Hidden;
+            MageButton.Visibility = Visibility.Hidden;
+            RogueButton.Visibility = Visibility.Hidden;
+            ArcherButton.Visibility = Visibility.Hidden;
+
+            NameButton.Visibility = Visibility.Hidden;
+            ReadyButton.Visibility = Visibility.Visible;
+
+        }
+        private void CreateCharacterButton_Click(object sender, RoutedEventArgs e)
+        {
+            player.Name = NameTextBox.Text;
+            player.Health = player.PlayerClass.ClassHealth;
+            player.Damage = player.PlayerClass.ClassDamage;
+            player.Armot = player.PlayerClass.ClassArmor;
+            player.Energy = player.PlayerClass.ClassEnergy;
+
+            MainGame mainGame = new MainGame(player);
+            mainGame.Show();
+            this.Close();
         }
     }
 }
