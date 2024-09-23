@@ -4,7 +4,7 @@
     {
         public int Health { get; set; }
         public string Name { get; set; }
-        public int Armot { get; set; }  // Typo: This should be "Armor"
+        public int Armot { get; set; } 
         public int Damage { get; set; }
         public int Energy { get; set; }
         public bool IsStamina { get; set; }

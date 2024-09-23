@@ -71,6 +71,8 @@
                     <Label Style="{StaticResource ButtonLabels}">Close</Label>
                 </Button>
             </Border>
+
+            <Image Margin="10,160,0,0" Width="350" Name="StatsPageImg" Stretch="UniformToFill" />
         </Canvas>
     </Grid>
 </Window>

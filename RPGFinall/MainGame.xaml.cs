@@ -1,6 +1,7 @@
 ﻿using RPGFinall.Classes;
 using System;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace RPGFinall
 {
@@ -8,13 +9,14 @@ namespace RPGFinall
     {
         // Store player as a class-level field
         private Player _player;
+        GameMaster gameMaster;
 
         public MainGame(Player player)
         {
+            GameMaster gameMaster = new GameMaster(true, true, 0, 0, _player);
             // Assign player to the class-level field
             _player = player;
 
-            GameMaster gameMaster = new GameMaster(true, true, 0, 0, _player);
             InitializeComponent();
 
             // Use _player instead of player
@@ -46,6 +48,7 @@ namespace RPGFinall
             {
                 EnergyStatyLabel.Content = "Mana: " + _player.Energy;
             }
+            StatsPageImg.Source = new BitmapImage(new Uri(_player.PlayerClass.GraphicFile, UriKind.Relative));
         }
 
         private void CloseStatsButton_Click(object sender, RoutedEventArgs e)
