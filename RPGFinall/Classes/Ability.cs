@@ -15,7 +15,9 @@ namespace RPGFinall.Classes
         public int Cooldown { get; set; }
         public int Regen { get; set; }
 
-        public Ability(string name, string description, int damage, int energyCost, int cooldown, int regen)
+        public int Armor { get; set; }
+
+        public Ability(string name, string description, int damage, int energyCost, int cooldown, int regen, int armor)
         {
             Name = name;
             Description = description;
@@ -23,6 +25,7 @@ namespace RPGFinall.Classes
             EnergyCost = energyCost;
             Cooldown = cooldown;
             Regen = regen;
+            Armor = armor;
         }
     }
 }

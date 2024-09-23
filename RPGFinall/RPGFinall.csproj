@@ -15,13 +15,20 @@
     <None Remove="Fonty\CinzelDecorative-Regular.ttf" />
     <None Remove="Fonty\UncialAntiqua-Regular.ttf" />
     <None Remove="Obrazky\ArcherClass.png" />
+    <None Remove="Obrazky\BoneSprout.png" />
     <None Remove="Obrazky\KnightClass.png" />
     <None Remove="Obrazky\MageClass.png" />
     <None Remove="Obrazky\RogueClass.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="bitmapa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Obrazky\ArcherClass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Obrazky\BoneSprout.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Obrazky\KnightClass.png">
@@ -30,9 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="bitmapa.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Fonty\CinzelDecorative-Black.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

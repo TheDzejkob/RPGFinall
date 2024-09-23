@@ -19,7 +19,14 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
-        
+
+        <Style x:Key="Buttons" TargetType="Button">
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="35"/>
+            <Setter Property="Background" Value="#5a358c"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -73,6 +80,53 @@
             </Border>
 
             <Image Margin="10,160,0,0" Width="350" Name="StatsPageImg" Stretch="UniformToFill" />
+            
         </Canvas>
+
+        <TextBlock x:Name="WakeUpText" Foreground="#8256bf" Grid.Row="1" Grid.ColumnSpan="3" FontFamily="pack://application:,,,/RPGFinall;component/Fonty/#Cinzel Decorative Regular" FontSize="15" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            You awaken once more, reborn from the endless cycle of death. 
+            <LineBreak/>The cold earth clings to your skin, a graveyard stretches before you. 
+            <LineBreak/>But this time, it feels different. This time, you sense a shift, 
+            <LineBreak/> as if fate itself holds its breath.Could this be the awakening that 
+            <LineBreak/>finally frees you from the chains of oblivion?
+            
+            <LineBreak/>
+            <LineBreak/>
+        </TextBlock>
+    
+        <Border VerticalAlignment="Bottom" x:Name="GetUpButton" Visibility="Visible"  Grid.Column="2"  Grid.Row="3"  Margin="0,0,0,10">
+            <Button x:Name="EEEEEE" Style="{StaticResource Buttons}"  Click="GetUpButton_Click">
+                <Label Style="{StaticResource ButtonLabels}">Get yourself up</Label>
+            </Button>
+        </Border>
+
+
+
+        <Label Grid.Row="1" x:Name="PlayerCombatHp" HorizontalAlignment="Center" VerticalAlignment="Bottom"   Style="{StaticResource StatyLabels}" Visibility="Visible">...'s HP</Label>
+        <Label Grid.Row="1" Grid.Column="2" x:Name="EnemyCombatHp" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Style="{StaticResource StatyLabels}" Visibility="Collapsed" >...'s HP</Label>
+        <Label Grid.Row="2" x:Name="PlayerCombatStamina" HorizontalAlignment="Center" VerticalAlignment="Top"   Style="{StaticResource StatyLabels}" Visibility="Visible">...'s Stamina</Label>
+        <Label Grid.Row="2" x:Name="PlayerCombatArmor" HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top"   Style="{StaticResource StatyLabels}" Visibility="Visible">...'s Armor</Label>
+        
+
+        <Image Margin="0,0,0,40" x:Name="PlayerCombatImage" Grid.Row="1" Stretch="UniformToFill" ></Image>
+        <Image Margin="0,0,0,40" x:Name="EnemyCombatImage" Grid.Row="1" Grid.Column="2" Stretch="UniformToFill" ></Image>
+
+        <Border VerticalAlignment="Bottom" HorizontalAlignment="Left" x:Name="BasicAttackButton"   Grid.Row="3"  Margin="10,0,0,10">
+            <Button Style="{StaticResource Buttons}" Width="80" Click="BasicAttackButton_Click">
+                <Label Style="{StaticResource ButtonLabels}">Attack</Label>
+            </Button>
+        </Border>
+
+        <Border VerticalAlignment="Bottom" HorizontalAlignment="Center" x:Name="HeavyAttackButton"   Grid.Row="3"  Margin="30,0,0,10">
+            <Button Style="{StaticResource Buttons}" Width="80" Click="HeavyAttackButton_Click" >
+                <Label Style="{StaticResource ButtonLabels}">Heavy Att</Label>
+            </Button>
+        </Border>
+
+        <Border VerticalAlignment="Bottom" Grid.ColumnSpan="2" HorizontalAlignment="Left" x:Name="ArmorUpButton"   Grid.Row="3"  Margin="190,0,0,10">
+            <Button Style="{StaticResource Buttons}" Width="80" Click="ArmorUpButton_Click">
+                <Label Style="{StaticResource ButtonLabels}">Armor Up</Label>
+            </Button>
+        </Border>
     </Grid>
 </Window>

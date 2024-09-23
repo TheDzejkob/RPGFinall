@@ -14,13 +14,16 @@ namespace RPGFinall.Classes
         public int Level { get; set; }
         public Player CurentPlayer { get; set; }
 
-        public GameMaster(bool playersTurn, bool alive, int xp, int level, Player curentPlayer)
+        public bool InCombat { get; set; }
+
+        public GameMaster(bool playersTurn, bool alive, int xp, int level, Player curentPlayer, bool inCombat)
         {
             PlayersTurn = playersTurn;
             Alive = alive;
             Xp = xp;
             Level = level;
             CurentPlayer = curentPlayer;
+            InCombat = inCombat;
         }
     }
 

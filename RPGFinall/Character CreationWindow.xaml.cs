@@ -8,7 +8,7 @@ namespace RPGFinall
     public partial class Character_CreationWindow : Window
     {
 
-        string filepathArcher = "Obrazky/ArcherClass.png";
+        
 
         // HardCoded Classy později přidat deserializaci z json filu pro jednoduší scalování (týká se i enemaku)
         new Classy Knight = new Classy("Knight", 15, 2, 6, 30, "Obrazky/KnightClass.png");
@@ -17,7 +17,7 @@ namespace RPGFinall
         new Classy Archer = new Classy("Archer", 8, 6, 0, 20, "Obrazky/ArcherClass.png");
 
 
-        // hráč
+        
         new Player player = new Player(1, "default name", 1, 1, 1, true, null);
 
         public Character_CreationWindow()
