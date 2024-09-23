@@ -7,16 +7,14 @@ namespace RPGFinall
 {
     public partial class Character_CreationWindow : Window
     {
-        string filepathKnight = "Obrazky/KnightClass.png";
-        string filepathMage = "Obrazky/MageClass.png";
-        string filepathRogue = "Obrazky/RogueClass.png";
+
         string filepathArcher = "Obrazky/ArcherClass.png";
 
         // HardCoded Classy později přidat deserializaci z json filu pro jednoduší scalování (týká se i enemaku)
-        new Classy Knight = new Classy("Knight", 15, 2, 6, 30);
-        new Classy Mage   = new Classy("Mage",10,5,1,35);
-        new Classy Rogue = new Classy("Rogue", 12, 4, 2, 40);
-        new Classy Archer = new Classy("Archer", 8, 6, 0, 20);
+        new Classy Knight = new Classy("Knight", 15, 2, 6, 30, "Obrazky/KnightClass.png");
+        new Classy Mage   = new Classy("Mage",10,5,1,35,"Obrazky/MageClass.png");
+        new Classy Rogue = new Classy("Rogue", 12, 4, 2, 40, "Obrazky/RogueClass.png");
+        new Classy Archer = new Classy("Archer", 8, 6, 0, 20, "Obrazky/ArcherClass.png");
 
 
         // hráč
@@ -36,7 +34,7 @@ namespace RPGFinall
         private void KnightButton_Click(object sender, RoutedEventArgs e)
         {   
             player.PlayerClass = Knight;
-            ClassImage.Source = new BitmapImage(new Uri(filepathKnight, UriKind.Relative));
+            ClassImage.Source = new BitmapImage(new Uri(Knight.GraphicFile, UriKind.Relative));
             ClassNameLabel.Content = Knight.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Knight.ClassHealth;
             DmgStatyLabel.Content = "Class Dmg‎ " + Knight.ClassDamage;
@@ -48,7 +46,7 @@ namespace RPGFinall
         private void MageButton_Click(object sender, RoutedEventArgs e)
         {
             player.PlayerClass = Mage;
-            ClassImage.Source = new BitmapImage(new Uri(filepathMage, UriKind.Relative));
+            ClassImage.Source = new BitmapImage(new Uri(Mage.GraphicFile, UriKind.Relative));
             ClassNameLabel.Content = Mage.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Mage.ClassHealth;
             DmgStatyLabel.Content = "Class Dmg‎ " + Mage.ClassDamage;
@@ -60,7 +58,7 @@ namespace RPGFinall
         private void RogueButton_Click(object sender, RoutedEventArgs e)
         {
             player.PlayerClass = Rogue;
-            ClassImage.Source = new BitmapImage(new Uri(filepathRogue, UriKind.Relative));
+            ClassImage.Source = new BitmapImage(new Uri(Rogue.GraphicFile, UriKind.Relative));
             ClassNameLabel.Content = Rogue.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Rogue.ClassHealth;
             DmgStatyLabel.Content = "Class Dmg‎ " + Rogue.ClassDamage;
@@ -72,7 +70,7 @@ namespace RPGFinall
         private void ArcherButton_Click(object sender, RoutedEventArgs e)
         {
             player.PlayerClass = Archer;
-            ClassImage.Source = new BitmapImage(new Uri(filepathArcher, UriKind.Relative));
+            ClassImage.Source = new BitmapImage(new Uri(Archer.GraphicFile, UriKind.Relative));
             ClassNameLabel.Content = Archer.ClassName;
             HpStatyLabel.Content = "Class Hp‎ " + Archer.ClassHealth;
             DmgStatyLabel.Content = "Class Dmg‎ " + Archer.ClassDamage;

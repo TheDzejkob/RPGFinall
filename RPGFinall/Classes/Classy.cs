@@ -11,13 +11,14 @@
         public string GraphicFile { get; set; }
 
 
-        public Classy(string className, int classHealth, int classDamage, int classArmor, int classEnergy)
+        public Classy(string className, int classHealth, int classDamage, int classArmor, int classEnergy, string graphicFile)
         {
             ClassName = className;
             ClassHealth = classHealth;
             ClassDamage = classDamage;
             ClassArmor = classArmor;
             ClassEnergy = classEnergy;
+            GraphicFile = graphicFile;
         }
     }
 }

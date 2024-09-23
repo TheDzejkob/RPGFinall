@@ -6,6 +6,21 @@
         xmlns:local="clr-namespace:RPGFinall"
         mc:Ignorable="d"
         Title="InGame" Height="540" Width="960" Background="#120926">
+    <Window.Resources>
+        <Style x:Key="ButtonLabels" TargetType="Label">
+            <Setter Property="Foreground" Value="#120926"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style x:Key="StatyLabels" TargetType="Label">
+            <Setter Property="Margin" Value="10,0,0,0"/>
+            <Setter Property="Foreground" Value="#8256bf"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
@@ -25,7 +40,37 @@
         <Image x:Name="PlayerImage" Grid.Row="1" Stretch="UniformToFill" />
 
         <Image x:Name="EnemyImage" Grid.Row="1" Grid.Column="2" Stretch="UniformToFill"/>
-        
-        
+
+        <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
+                 Margin="10,10,0,0" CornerRadius="10">
+            <Button Width="80" Background="#a47ed9"  Click="StatsButton_Click">
+                <Label Style="{StaticResource ButtonLabels}">Stats</Label>
+            </Button>
+        </Border>
+
+
+
+        <Canvas x:Name="StatsOverlay" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed">
+            <Rectangle Width="350" Height="540" Fill="#201140" />
+
+            <Label x:Name="StatsName" FontFamily="pack://application:,,,/RPGFinall;component/Fonty/#Cinzel Decorative Black" 
+            Grid.Column="1" Grid.Row="0" 
+             FontSize="19"  Foreground="#8256bf" Margin="120,0,0,0" 
+            >...'s Stats</Label>
+
+            <Label Grid.Row="2" x:Name="HpStatyLabel" Margin="10,50,0,0"  Style="{StaticResource StatyLabels}" >Health:</Label>
+            <Label Grid.Row="2" x:Name="DmgStatyLabel" Margin="10,75,0,0"  Style="{StaticResource StatyLabels}" >Demage:</Label>
+            <Label Grid.Row="2" x:Name="ArmorStatyLabel" Margin="10,100,0,0"  Style="{StaticResource StatyLabels}" >Armor:</Label>
+            <Label Grid.Row="2" x:Name="EnergyStatyLabel" Margin="10,125,0,0"  Style="{StaticResource StatyLabels}" >Energy:</Label>
+
+
+
+            <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2" BorderBrush="#201140" 
+                 Margin="10,10,0,0" CornerRadius="10">
+                <Button Width="80" Background="#a47ed9" Click="CloseStatsButton_Click">
+                    <Label Style="{StaticResource ButtonLabels}">Close</Label>
+                </Button>
+            </Border>
+        </Canvas>
     </Grid>
 </Window>
