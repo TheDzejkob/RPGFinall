@@ -37,12 +37,10 @@ namespace RPGFinall
             heavyAttack = new Ability("Heavy Attack", "Heavy attack that uses more stamina but deals more ddemage", player.Damage * 2, 2, 0, 0, 0);
             armorUP = new Ability("Armor Up", "Increase your armor", 0, 3, 99, 0, 3);
             basicEnemy = new Classy("Basic Enemy", 5, 1, 0, 5, "obrazky/BoneSprout.png");
-            BoneSprout = new Player(5, "Bone Sprout", 0, 1, 5, true, basicEnemy);
+            BoneSprout = new Player(8, "Bone Sprout", 0, 1, 5, true, basicEnemy);
 
-            // Initialize GameMaster after _player is assigned
             gameMaster = new GameMaster(true, true, 0, 0, _player, false);
 
-            // Use _player in the UI
             if (gameMaster.PlayersTurn == true)
             {
                 TurnLabel.Content = _player.Name + "'s Turn";
@@ -71,7 +69,7 @@ namespace RPGFinall
                 EnergyStatyLabel.Content = "Mana: " + _player.Energy;
             }
 
-            // Set the image source using the player's class graphic file
+
             StatsPageImg.Source = new BitmapImage(new Uri(_player.PlayerClass.GraphicFile, UriKind.Relative));
         }
 
@@ -122,7 +120,7 @@ namespace RPGFinall
             }
         }
 
-        
+
 
         void UpdateCombatLabels()
         {
@@ -130,36 +128,58 @@ namespace RPGFinall
             EnemyCombatHp.Content = "HP " + CurentEnemy.Health;
             PlayerCombatArmor.Content = "Armor " + _player.Armot;
             PlayerCombatStamina.Content = "Stamina " + _player.Energy;
+            if(gameMaster.PlayersTurn == true)
+            {
+                TurnLabel.Content = _player.Name + "'s Turn";
+            }
+            else
+            {
+                TurnLabel.Content = "Enemy's turn";
+            }
+            if (_player.Health <= 0)
+            {
+                Death();
+            }
+            if (CurentEnemy.Health <= 0)
+            {
+                EnemyDeath();
+            }
         }
 
-        void EnemyTurn()
+        async void EnemyTurn()
         {
             if (CurentEnemy.Health <= CurentEnemy.Health / 2 && EnemyAbilityUsed == false)
             {
                 CurentEnemy.Health += basicHeal.Regen;
 
                 EnemyAbilityUsed = true;
+                await System.Threading.Tasks.Task.Delay(2000); 
             }
             else
             {
                 if (_player.Armot > 0)
                 {
                     _player.Armot -= BoneSprout.Damage;
+                    await System.Threading.Tasks.Task.Delay(2000);
+
                 }
                 else
                 {
                     _player.Health -= basicAttack.Damage;
+                    await System.Threading.Tasks.Task.Delay(2000);
+
                 }
             }
-            UpdateCombatLabels();
             gameMaster.PlayersTurn = true;
+            UpdateCombatLabels();
         }
 
-        private void BasicAttackButton_Click(object sender, RoutedEventArgs e) 
-        { 
-            if (_player.Energy > 0)
+        private void BasicAttackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_player.Energy >= basicAttack.EnergyCost && gameMaster.PlayersTurn == true)
             {
-                if(CurentEnemy.Armot > 0) {
+                if (CurentEnemy.Armot > 0)
+                {
                     CurentEnemy.Armot -= basicAttack.Damage;
                 }
                 else
@@ -170,15 +190,17 @@ namespace RPGFinall
             }
             else
             {
-                MessageBox.Show("Not enough energy");
+                MessageBox.Show("Not enough energy or not ur turn ");
             }
+            gameMaster.PlayersTurn = false;
             UpdateCombatLabels();
+            EnemyTurn();
         }
-        //kašlu na nejake komentovani kdo se ma psat s komentama 
+        //kašlu na nejake komentovani kdo se ma psat s komentama  
         // jsou 4 ráno miluju fr -_- 👌
         private void HeavyAttackButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_player.Energy >= heavyAttack.EnergyCost)
+            if (_player.Energy >= heavyAttack.EnergyCost && gameMaster.PlayersTurn == true)
             {
                 if (CurentEnemy.Armot > 0)
                 {
@@ -192,25 +214,52 @@ namespace RPGFinall
             }
             else
             {
-                MessageBox.Show("Not enough energy");
+                MessageBox.Show("Not enough energy or not ur turn");
             }
+            gameMaster.PlayersTurn = false;
             UpdateCombatLabels();
+            EnemyTurn();
         }
 
-        private void ArmorUpButton_Click (object sender, RoutedEventArgs e)
+        private void ArmorUpButton_Click(object sender, RoutedEventArgs e)
         {
-            if (_player.Energy >= armorUP.EnergyCost)
+            if (_player.Energy >= armorUP.EnergyCost && gameMaster.PlayersTurn == true)
             {
                 _player.Armot += armorUP.Armor;
                 _player.Energy -= armorUP.EnergyCost;
             }
             else
             {
-                MessageBox.Show("Not enough energy");
+                MessageBox.Show("Not enough energy or not ur turn");
             }
+            gameMaster.PlayersTurn = false;
             UpdateCombatLabels();
+            EnemyTurn();
         }
 
-       
+        void Death()
+        {
+            WakeUpText.Visibility = Visibility.Visible;
+            WakeUpText.Text = "U DIED";
+
+            BasicAttackButton.Visibility = Visibility.Hidden;
+            HeavyAttackButton.Visibility = Visibility.Hidden;
+            ArmorUpButton.Visibility = Visibility.Hidden;
+            CloseWonButton.Visibility = Visibility.Visible;
+        }
+        void EnemyDeath()
+        {
+            WakeUpText.Visibility = Visibility.Visible;
+            WakeUpText.Text = "U KILLED THE ENEMY";
+
+            BasicAttackButton.Visibility = Visibility.Hidden;
+            HeavyAttackButton.Visibility = Visibility.Hidden;
+            ArmorUpButton.Visibility = Visibility.Hidden;
+            CloseWonButton.Visibility = Visibility.Visible;
+        }
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

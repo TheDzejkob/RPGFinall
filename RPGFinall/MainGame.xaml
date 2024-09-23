@@ -128,5 +128,12 @@
                 <Label Style="{StaticResource ButtonLabels}">Armor Up</Label>
             </Button>
         </Border>
+
+
+        <Border VerticalAlignment="Bottom" x:Name="CloseWonButton" Visibility="Collapsed"  Grid.Column="1"  Grid.Row="2"  Margin="0,0,0,10">
+            <Button  Style="{StaticResource Buttons}"  Click="CloseButton_Click">
+                <Label Style="{StaticResource ButtonLabels}">Close</Label>
+            </Button>
+        </Border>
     </Grid>
 </Window>
